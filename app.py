@@ -12,6 +12,15 @@ DATA_FILE = "products.json"
 AKCII_FILE = "akcii.json"
 NOVINKI_FILE = "novinki.json"
 
+from threading import Thread
+import bot  # предполагается, что bot.polling() вынесен в функцию
+
+def run_bot():
+    bot.start_bot()  # нужно обернуть bot.polling() в функцию
+
+# Запуск бота в отдельном потоке
+Thread(target=run_bot, daemon=True).start()
+
 def normalize_street(s):
     return re.sub(r'[^а-яa-z0-9\s]', '', s.lower()).strip()
 
@@ -83,4 +92,5 @@ def add_product():
     return {"status": "ok", "id": product["id"]}
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
