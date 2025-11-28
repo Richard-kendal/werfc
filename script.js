@@ -65,7 +65,7 @@ function goBack() {
 // === API ===
 async function fetchProducts() {
   try {
-    const res = await fetch('http://localhost:5000/api/products');
+    const res = await fetch('https://werfc.onrender.com/api/products');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить товары. Запущен ли сервер?');
@@ -75,7 +75,7 @@ async function fetchProducts() {
 
 async function fetchAkcii() {
   try {
-    const res = await fetch('http://localhost:5000/api/akcii');
+    const res = await fetch('https://werfc.onrender.com/api/akcii');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить акции');
@@ -85,7 +85,7 @@ async function fetchAkcii() {
 
 async function fetchNovinki() {
   try {
-    const res = await fetch('http://localhost:5000/api/novinki');
+    const res = await fetch('https://werfc.onrender.com/api/novinki');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить новые товары');
@@ -471,4 +471,5 @@ window.nextProduct = nextProduct;
 window.showPromo = showPromo;
 window.showNewProducts = showNewProducts;
 window.prevPromoNew = prevPromoNew;
+
 window.nextPromoNew = nextPromoNew;
