@@ -44,12 +44,18 @@ function clearContent() {
 function showMainMenu() {
   document.getElementById('main-menu').style.display = 'flex';
   clearContent();
+  // Скрываем MainButton при возврате в главное меню
   tg.MainButton.hide();
 }
 
 function pushScreen(renderFn, label = "Назад") {
   navStack.push(renderFn);
-  tg.MainButton.setText(label).show().onClick(goBack);
+  // Показываем MainButton только если это не акции/новинки (или по желанию)
+  if (label !== "Назад к товару") {
+    tg.MainButton.setText(label).show().onClick(goBack);
+  } else {
+    tg.MainButton.hide(); // Для "Назад к товару" не показываем MainButton
+  }
   renderFn();
 }
 
@@ -65,7 +71,7 @@ function goBack() {
 // === API ===
 async function fetchProducts() {
   try {
-    const res = await fetch('https://werfc.onrender.com/api/products');
+    const res = await fetch('http://localhost:5000/api/products');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить товары. Запущен ли сервер?');
@@ -75,7 +81,7 @@ async function fetchProducts() {
 
 async function fetchAkcii() {
   try {
-    const res = await fetch('https://werfc.onrender.com/api/akcii');
+    const res = await fetch('http://localhost:5000/api/akcii');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить акции');
@@ -85,7 +91,7 @@ async function fetchAkcii() {
 
 async function fetchNovinki() {
   try {
-    const res = await fetch('https://werfc.onrender.com/api/novinki');
+    const res = await fetch('http://localhost:5000/api/novinki');
     return await res.json();
   } catch (e) {
     alert('Не удалось загрузить новые товары');
@@ -263,13 +269,16 @@ async function showProductsInShop(city, street, category, brand) {
 
 // === Отображение обычной карточки товара (с локациями) ===
 function renderCurrentProductCard() {
+  // Скрываем главное меню при показе карточки товара
+  document.getElementById('main-menu').style.display = 'none';
+
   const productGroup = currentProductGroupList[currentProductIndex];
   const total = currentProductGroupList.length;
 
   let html = `
     <div class="back-btn" onclick="goBack()">← Назад</div>
     <div class="product-card">
-      <img src="${productGroup.variants[0].image_url || 'https://via.placeholder.com/80'}"
+      <img src="${productGroup.variants[0].image_url || 'https://via.placeholder.com/80  '}"
            style="width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:16px;">
       <h4 style="color:#fff; margin-bottom:12px;">${productGroup.name}</h4>
       
@@ -324,7 +333,7 @@ function showLocationFromVariant(flavor, productName, brand) {
       html += `<p style="color:#888; text-align:center;">Нет данных о наличии</p>`;
     } else {
       matches.forEach(item => {
-        const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDqK4dZy1n4vZ6XxQ6X6X6X6X6X6X6X6X6&q=${encodeURIComponent(item.city + ' ' + item.street)}`;
+        const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDqK4dZy1n4vZ6XxQ6X6X6X6X6X6X6X6X6&q=  ${encodeURIComponent(item.city + ' ' + item.street)}`;
         html += `
           <div style="margin-bottom:20px; background:rgba(30,30,40,0.6); padding:12px; border-radius:10px;">
             <p style="color:#aaa; margin-bottom:8px;">📍 ${item.city}, ${item.street}</p>
@@ -352,6 +361,8 @@ async function showPromo() {
       <div class="back-btn" onclick="goBack()">← Назад</div>
       <p style="color:#888; text-align:center;">Нет акций</p>
     `;
+    // Скрываем главное меню
+    document.getElementById('main-menu').style.display = 'none';
     return;
   }
 
@@ -380,6 +391,8 @@ async function showNewProducts() {
       <div class="back-btn" onclick="goBack()">← Назад</div>
       <p style="color:#888; text-align:center;">Нет новых товаров</p>
     `;
+    // Скрываем главное меню
+    document.getElementById('main-menu').style.display = 'none';
     return;
   }
 
@@ -399,13 +412,16 @@ async function showNewProducts() {
 }
 
 function renderCurrentPromoOrNewCard(title) {
+  // Скрываем главное меню при показе акций или новинок
+  document.getElementById('main-menu').style.display = 'none';
+
   const productGroup = currentProductGroupList[currentProductIndex];
   const total = currentProductGroupList.length;
 
   let html = `
     <div class="back-btn" onclick="goBack()">← Назад</div>
     <div class="product-card">
-      <img src="${productGroup.variants[0].image_url || 'https://via.placeholder.com/80'}"
+      <img src="${productGroup.variants[0].image_url || 'https://via.placeholder.com/80  '}"
            style="width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:16px;">
       <h4 style="color:#fff; margin-bottom:12px;">${productGroup.name}</h4>
       
@@ -471,5 +487,4 @@ window.nextProduct = nextProduct;
 window.showPromo = showPromo;
 window.showNewProducts = showNewProducts;
 window.prevPromoNew = prevPromoNew;
-
 window.nextPromoNew = nextPromoNew;
