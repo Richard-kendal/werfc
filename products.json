@@ -1,0 +1,72 @@
+[
+  {
+    "category": "Одноразовые сигареты",
+    "brand": "Мишки",
+    "name": " 150440",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": " клубника",
+    "city": "Северодвинск",
+    "street": "Ленина, аа",
+    "id": "3166772836"
+  },
+  {
+    "category": "Одноразовые сигареты",
+    "brand": "Мишки",
+    "name": " 150440",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": " клубника",
+    "city": "Архангельск",
+    "street": "Ленина, аа",
+    "id": "1282874279"
+  },
+  {
+    "category": " сигареты",
+    "brand": "Мишки",
+    "name": " 150440",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": " клубника",
+    "city": "Архангельск",
+    "street": "Ленина, аа",
+    "id": "145957226"
+  },
+  {
+    "category": " сигареты",
+    "brand": "ротман",
+    "name": " тонкие сигареты",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": " клубника",
+    "city": "Архангельск",
+    "street": "Ленина, аа",
+    "id": "3029002189"
+  },
+  {
+    "category": " сигареты",
+    "brand": "ротман",
+    "name": " обычные",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": " банан",
+    "city": "Северодвинск",
+    "street": "Ленина, аа",
+    "id": "3281168933"
+  },
+  {
+    "category": "Одноразовые сигареты",
+    "brand": "Мишки",
+    "name": "Мишки Лесные Ягоды 1500",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": "Лесная клубника",
+    "city": "Северодвинск",
+    "street": "Ленина, аа",
+    "id": "170551931"
+  },
+  {
+    "category": "Одно",
+    "brand": "Мишки",
+    "name": "Мишки Лесные Ягоды 1500",
+    "image_url": "https://via.placeholder.com/300?text=Мишки",
+    "flavor": "Лесная клубника",
+    "city": "Северодвинск",
+    "street": "Ленина, аа",
+    "id": "3575654378"
+  }
+]
