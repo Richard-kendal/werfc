@@ -3,6 +3,10 @@ import requests
 import json
 import os
 
+def start_bot():
+    print("Бот запущен...")
+    bot.polling()
+
 BOT_TOKEN = "8437761728:AAFh1QSQamm0HX4vDsvNF3UIRyqFyFK_bVA"
 API_URL = "http://localhost:5000/api/add-product"
 
@@ -133,4 +137,5 @@ def add_new_product(message):
 
 if __name__ == "__main__":
     print("Бот запущен...")
+
     bot.polling()
